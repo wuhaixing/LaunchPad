@@ -1,3 +1,23 @@
+export interface Credentials {
+  username:string;
+  email:string;
+  password:string;
+}
+export type StrapiUser = {
+  id: number;
+  username: string;
+  email: string;
+  mobile: string;
+  avatar: Image;
+  blocked: boolean;
+  provider: 'local' | 'github';
+};
+
+export type StrapiLoginResponse = {
+  jwt: string;
+  user: StrapiUser;
+};
+
 export interface Category {
   name: string;
 }
