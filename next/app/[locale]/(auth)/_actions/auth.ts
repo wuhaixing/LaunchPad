@@ -16,7 +16,7 @@ const config = {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
 };
-const BUSINESS_HOME = "/business/kanban";
+const BUSINESS_HOME = "/dashboard";
 
 export async function signupAction(
     prevState: any,
