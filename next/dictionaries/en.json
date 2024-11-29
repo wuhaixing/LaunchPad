@@ -1,0 +1,17 @@
+{
+    "brand":"DoingCRM",
+    "product" : {
+        "featured": {
+            "title":"Featured",
+            "pick":"Pick from our most popular collection"
+        }
+    },
+    "signup": {
+        "legend":"Sign up for DoingCRM",
+        "identifier":"Email / Mobile Number",
+        "password":"Password",
+        "confirm":"Password Confirm",
+        "submit":"Sign up",
+        "signin":"Already have account? Sign In"
+    }
+}

@@ -5,10 +5,13 @@ import { Field, Fieldset, Input, Label, Legend, Description } from '@headlessui/
 import { useFormState,useFormStatus } from "react-dom";
 import { signupAction } from "../../_actions/auth";
 import { initialFormState } from "@/components/elements/form-state";
-import { IconArrowLeft } from "@tabler/icons-react";
+import { IconArrowRight } from "@tabler/icons-react";
 import { Link } from "next-view-transitions";
 
-export const SignupForm = () => {
+export const SignupForm = (
+  {labels}:
+  {labels:any}
+) => {
     const status = useFormStatus();
     const [formState, formAction] = useFormState(
         signupAction,
@@ -17,9 +20,9 @@ export const SignupForm = () => {
     return (
         <form action={formAction}  className="w-full my-4">
         <Fieldset disabled={status.pending} className="space-y-4">
-            <Legend className="text-xl md:text-4xl font-bold my-6">Sign up for LaunchPad</Legend>          
+            <Legend className="text-xl md:text-4xl font-bold my-6">{labels.legend}</Legend>          
             <Field>
-              <Label className="block my-2">Email / Mobile Number</Label>
+              <Label className="block my-2">{labels.identifier}</Label>
               {
                 formState?.errors?.email &&
                     formState?.errors.email.map((error: string,index:number) => (
@@ -30,7 +33,7 @@ export const SignupForm = () => {
                 className="h-10 pl-4 w-full rounded-md text-sm bg-charcoal border border-neutral-800 text-white placeholder-neutral-500 outline-none focus:outline-none active:outline-none focus:ring-2 focus:ring-neutral-800"/>
             </Field>  
             <Field>
-              <Label className="block my-2">Password</Label>
+              <Label className="block my-2">{labels.password}</Label>
               {
                 formState?.errors?.password &&
                     formState?.errors.password.map((error: string,index:number) => (
@@ -41,7 +44,7 @@ export const SignupForm = () => {
                 className="h-10 pl-4 w-full rounded-md text-sm bg-charcoal border border-neutral-800 text-white placeholder-neutral-500 outline-none focus:outline-none active:outline-none focus:ring-2 focus:ring-neutral-800"/>
             </Field> 
             <Field>
-              <Label className="block my-2">Password Confirm</Label>
+              <Label className="block my-2">{labels.confirm}</Label>
               {
                 formState?.errors?.confirm &&
                     formState?.errors.confirm.map((error: string,index:number) => (
@@ -52,11 +55,11 @@ export const SignupForm = () => {
                 className="h-10 pl-4 w-full rounded-md text-sm bg-charcoal border border-neutral-800 text-white placeholder-neutral-500 outline-none focus:outline-none active:outline-none focus:ring-2 focus:ring-neutral-800"/>
             </Field>
             <Button variant="muted" type="submit" className="w-full py-3">
-              <span className="text-sm">Sign up</span>
+              <span className="text-sm">{labels.submit}</span>
             </Button>  
-            <Link href="/sign-in" className="flex space-x-2 items-center">
-              <IconArrowLeft className="w-4 h-4 text-muted" />
-              <span className="text-sm text-muted">Sign in</span>
+            <Link href="/sign-in" className="flex space-x-2 items-center">              
+              <span className="text-sm text-muted">{labels.signin}</span>
+              <IconArrowRight className="w-4 h-4 text-muted" />
             </Link>             
         </Fieldset>
         </form>

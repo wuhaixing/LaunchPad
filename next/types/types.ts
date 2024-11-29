@@ -12,7 +12,12 @@ export type StrapiUser = {
   blocked: boolean;
   provider: 'local' | 'github';
 };
-
+export type SessionUser = {
+  strapiUserId:number;
+  name:string;
+  email:string;
+  blocked:boolean;
+}
 export type StrapiLoginResponse = {
   jwt: string;
   user: StrapiUser;

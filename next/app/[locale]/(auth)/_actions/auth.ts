@@ -151,7 +151,7 @@ export async function signinAction(
               errors: {
                 message: error.message
               },
-              message: '登录出错'
+              message: 'Failed to Login'
             };
         }
       }
@@ -184,7 +184,7 @@ export async function signoutAction() {
         errors: {
           message: ""
         },
-        message: '退出出错'
+        message: 'Failed to Logout'
       };    
     }
     

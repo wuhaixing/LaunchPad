@@ -4,15 +4,17 @@ import { formatNumber } from "@/lib/utils";
 import { Link } from "next-view-transitions";
 import { Product } from "@/types/types";
 import { strapiImage } from "@/lib/strapi/strapiImage";
+import { getDictionary } from '@/app/[locale]/dictionaries';
 
-export const Featured = ({ products, locale }: { products: Product[], locale: string }) => {
+export const Featured = async ({ products, locale }: { products: Product[], locale: string }) => {
+  const dict = await getDictionary(locale);
   return (
     <div className="py-20">
       <h2 className="text-2xl md:text-4xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-white to-white mb-2">
-        Featured
+        {dict.product.featured.title}
       </h2>
       <p className="text-neutral-500 text-lg mt-4 mb-10">
-        Pick from our most popular collection
+        {dict.product.featured.pick}
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3  gap-10">
         <div className="md:col-span-2">

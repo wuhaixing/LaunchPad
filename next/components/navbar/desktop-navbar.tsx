@@ -67,7 +67,7 @@ export const DesktopNavbar = ({ leftNavbarItems, rightNavbarItems, logo, locale 
         )}
       </AnimatePresence>
       <div className="flex flex-row gap-2 items-center">
-        <Logo locale={locale} image={logo?.image} />
+        <Logo locale={locale} image={logo?.image} company={logo?.company} />
         <div className="flex items-center gap-1.5">
           {leftNavbarItems.map((item) => (
             <NavbarItem href={`/${locale}${item.URL}` as never} key={item.text} target={item.target}>

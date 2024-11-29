@@ -6,7 +6,8 @@ import { BlurImage } from "./blur-image";
 import { strapiImage } from "@/lib/strapi/strapiImage";
 import { Image } from "@/types/types";
 
-export const Logo = ({ image, locale }: { image?: Image, locale?: string }) => {
+export const Logo = ({ image, company, locale }: { image?: Image, company?:string,locale?: string }) => {
+  
   if (image) {
     return (
       <Link
@@ -21,7 +22,7 @@ export const Logo = ({ image, locale }: { image?: Image, locale?: string }) => {
           className="h-10 w-10 rounded-xl mr-2"
         />
 
-        <span className="text-white font-bold">LaunchPad</span>
+        <span className="text-white font-bold">{company}</span>
       </Link>
     );
   }

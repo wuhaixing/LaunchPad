@@ -1,0 +1,17 @@
+{
+    "brand":"DoingCRM",
+    "product" : {
+        "featured": {
+            "title":"Vedettes",
+            "pick":"Choisissez parmi notre collection la plus populaire"
+        }
+    },
+    "signup": {
+        "legend":"Sign up for LaunchPad",
+        "identifier":"Email / Mobile Number",
+        "password":"Password",
+        "confirm":"Password Confirm",
+        "submit":"Sign up",
+        "signin":"Already have account? Sign In"
+    }
+}

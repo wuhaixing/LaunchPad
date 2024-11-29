@@ -19,7 +19,24 @@ const inter = Inter({
     weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-export default async function LocaleLayout({
+// Default Global SEO for pages without them
+export async function generateMetadata({
+    params,
+}: {
+    params: { locale: string; slug: string };
+}): Promise<Metadata> {
+    const pageData = await fetchContentType(
+        'global',
+        `&filters[locale][$eq]=${params.locale}&populate=seo.metaImage`,
+        true
+    );
+
+    const seo = pageData?.seo;
+    const metadata = generateMetadataObject(seo);
+    return metadata;
+}
+
+export default async function AuthLayout({
     children,
     params: { locale }
 }: {
@@ -29,6 +46,7 @@ export default async function LocaleLayout({
 
     const pageData = await fetchContentType('global', `filters[locale][$eq]=${locale}`, true);
     //console.dir(pageData,{depth:7});
+    const logo =pageData.navbar.logo;
     return (        
         <ViewTransitions>
             <div className={cn(
@@ -37,7 +55,7 @@ export default async function LocaleLayout({
                         )}>
                 <AmbientColor />
                 <Container className="h-screen max-w-lg mx-auto flex flex-col items-center justify-center">
-                    <Logo />
+                    <Logo locale={locale} image={logo?.image} company={logo?.company}/>
                     {children}
                     <Divider />
                     <OAuths />
