@@ -11,7 +11,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Link } from "next-view-transitions";
-import { LocaleSwitcher } from "../locale-switcher";
+import { LocaleToggle } from "../locale-toggle";
 
 type Props = {
   leftNavbarItems: {
@@ -77,10 +77,10 @@ export const DesktopNavbar = ({ leftNavbarItems, rightNavbarItems, logo, locale 
         </div>
       </div>
       <div className="flex space-x-2 items-center">
-        <LocaleSwitcher />
+        <LocaleToggle />
 
         {rightNavbarItems.map((item, index) => (
-          <Button key={item.text} variant={index === rightNavbarItems.length - 1 ? 'primary' : 'simple'} as={Link} href={`/${locale}${item.URL}`}>
+          <Button key={item.text} variant={index === rightNavbarItems.length - 1 ? 'default' : 'outline'} as={Link} href={`/${locale}${item.URL}`}>
             {item.text}
           </Button>
         ))}

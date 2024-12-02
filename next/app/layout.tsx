@@ -1,11 +1,11 @@
 import type { Viewport } from "next";
 import { Locale, i18n } from '@/i18n.config'
-
+import { ThemeProvider } from "@/context/theme-provider";
 import "./globals.css";
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#06b6d4" },
+    { media: "(prefers-color-scheme: light)", color: "#012634" },
     { media: "(prefers-color-scheme: dark)", color: "#06b6d4" },
   ],
 };
@@ -24,7 +24,14 @@ export default function RootLayout({
   return (
     <html lang={params.lang}>
       <body>
-        {children}
+        <ThemeProvider
+                attribute="class"
+                defaultTheme="light"
+                enableSystem
+                disableTransitionOnChange
+              >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
